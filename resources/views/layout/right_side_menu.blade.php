@@ -1,0 +1,1 @@
+right_side_menu.blade.php
