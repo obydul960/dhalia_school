@@ -180,6 +180,10 @@ return [
         *  html form collective add 
         */
         Collective\Html\HtmlServiceProvider::class,
+        /*
+         * Role permission
+         */
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -232,6 +236,8 @@ return [
         //html from collective add 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        // role permission
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
