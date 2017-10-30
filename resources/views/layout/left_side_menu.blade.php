@@ -13,6 +13,30 @@
                             <span>School Year</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{url('roles')}}">
+                            <i class="material-icons">text_fields</i>
+                            <span>School Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('assin_role')}}">
+                            <i class="material-icons">text_fields</i>
+                            <span>School Assin Roles</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('assin_permission')}}">
+                            <i class="material-icons">text_fields</i>
+                            <span>School Roles assin permission</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('permission')}}">
+                            <i class="material-icons">text_fields</i>
+                            <span>School Roles permission</span>
+                        </a>
+                    </li>
                     
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">

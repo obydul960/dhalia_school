@@ -1,6 +1,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="_token" content="{{ csrf_token() }}">
     <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -17,7 +18,8 @@
 
     <!-- Animation Css -->
     <link href="{{URL::asset('admin_assets/plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
+    <!-- Bootstrap Select Css -->
+    <link href="{{URL::asset('admin_assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
     <!-- Morris Chart Css-->
     <link href="{{URL::asset('admin_assets/plugins/morrisjs/morris.css')}}" rel="stylesheet" />
     <!-- JQuery DataTable Css -->

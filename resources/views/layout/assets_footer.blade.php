@@ -15,7 +15,8 @@
 
     <!-- Jquery CountTo Plugin Js -->
     <script src="{{URL::asset('admin_assets/plugins/jquery-countto/jquery.countTo.js')}}"></script>
-
+   <!-- Select Plugin Js -->
+   <script src="{{URL::asset('admin_assets/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
     <!-- Morris Plugin Js -->
     <script src="{{URL::asset('admin_assets/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{URL::asset('admin_assets/plugins/morrisjs/morris.js')}}"></script>
@@ -58,7 +59,12 @@
     <script src="{{URL::asset('admin_assets/js/demo.js')}}"></script>
   <!-- Tuest Flash message show -->
   <script type="text/javascript" src="{{URL::asset('admin_assets/js/pages/toastr/toastr.min.js')}}"></script>
-
+<!-- Data table shorting off -->
+  <script>
+      $scope.onPaginate = function () {
+          $scope.selected = [];
+      }
+  </script>
   <!-- Flash message shwo -->
   @if(Session::has('success'))
       <script type="text/javascript">

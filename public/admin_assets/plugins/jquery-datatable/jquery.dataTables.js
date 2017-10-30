@@ -759,7 +759,7 @@
 		 */
 		this.fnSort = function( aaSort )
 		{
-			this.api( true ).order( aaSort ).draw();
+			this.api( false ).order( aaSort ).draw();
 		};
 		
 		
@@ -1230,14 +1230,14 @@
 			
 			// If aaSorting is not defined, then we use the first indicator in asSorting
 			// in case that has been altered, so the default sort reflects that option
-			if ( oInit.aaSorting === undefined )
-			{
-				var sorting = oSettings.aaSorting;
-				for ( i=0, iLen=sorting.length ; i<iLen ; i++ )
-				{
-					sorting[i][1] = oSettings.aoColumns[ i ].asSorting[0];
-				}
-			}
+			// if ( oInit.aaSorting === undefined )
+			// {
+			// 	var sorting = oSettings.aaSorting;
+			// 	for ( i=0, iLen=sorting.length ; i<iLen ; i++ )
+			// 	{
+			// 		sorting[i][0] = oSettings.aoColumns[ i ].asSorting[0];
+			// 	}
+			// }
 			
 			/* Do a first pass on the sorting classes (allows any size changes to be taken into
 			 * account, and also will apply sorting disabled classes if disabled
@@ -1782,7 +1782,7 @@
 		_fnCompatMap( init, 'orderMulti',    'bSortMulti' );
 		_fnCompatMap( init, 'orderClasses',  'bSortClasses' );
 		_fnCompatMap( init, 'orderCellsTop', 'bSortCellsTop' );
-		_fnCompatMap( init, 'order',         'aaSorting' );
+		// _fnCompatMap( init, 'order',         'aaSorting' );
 		_fnCompatMap( init, 'orderFixed',    'aaSortingFixed' );
 		_fnCompatMap( init, 'paging',        'bPaginate' );
 		_fnCompatMap( init, 'pagingType',    'sPaginationType' );
@@ -6074,32 +6074,32 @@
 			if ( idx === undefined ) {
 				idx = $.inArray( a[1], asSorting );
 			}
-	
+
 			return idx+1 < asSorting.length ?
 				idx+1 :
 				overflow ?
 					null :
 					0;
 		};
-	
+
 		// Convert to 2D array if needed
 		if ( typeof sorting[0] === 'number' ) {
 			sorting = settings.aaSorting = [ sorting ];
 		}
-	
+
 		// If appending the sort then we are multi-column sorting
 		if ( append && settings.oFeatures.bSortMulti ) {
 			// Are we already doing some kind of sort on this column?
 			var sortIdx = $.inArray( colIdx, _pluck(sorting, '0') );
-	
+
 			if ( sortIdx !== -1 ) {
 				// Yes, modify the sort
 				nextSortIdx = next( sorting[sortIdx], true );
-	
+
 				if ( nextSortIdx === null && sorting.length === 1 ) {
 					nextSortIdx = 0; // can't remove sorting completely
 				}
-	
+
 				if ( nextSortIdx === null ) {
 					sorting.splice( sortIdx, 1 );
 				}
@@ -6117,7 +6117,7 @@
 		else if ( sorting.length && sorting[0][0] == colIdx ) {
 			// Single column - already sorting on this column, modify the sort
 			nextSortIdx = next( sorting[0] );
-	
+
 			sorting.length = 1;
 			sorting[0][1] = asSorting[ nextSortIdx ];
 			sorting[0]._idx = nextSortIdx;
@@ -6128,10 +6128,10 @@
 			sorting.push( [ colIdx, asSorting[0] ] );
 			sorting[0]._idx = 0;
 		}
-	
+
 		// Run the sort by calling a full redraw
 		_fnReDraw( settings );
-	
+
 		// callback used for async user interaction
 		if ( typeof callback == 'function' ) {
 			callback( settings );
@@ -6273,7 +6273,7 @@
 			time:    +new Date(),
 			start:   settings._iDisplayStart,
 			length:  settings._iDisplayLength,
-			order:   $.extend( true, [], settings.aaSorting ),
+			order:   $.extend( false, [], settings.aaSorting ),
 			search:  _fnSearchToCamel( settings.oPreviousSearch ),
 			columns: $.map( settings.aoColumns, function ( col, i ) {
 				return {
@@ -8853,31 +8853,31 @@
 	 * @param {array} order 2D array of sorting information to be applied.
 	 * @returns {DataTables.Api} this
 	 */
-	_api_register( 'order()', function ( order, dir ) {
-		var ctx = this.context;
-	
-		if ( order === undefined ) {
-			// get
-			return ctx.length !== 0 ?
-				ctx[0].aaSorting :
-				undefined;
-		}
-	
-		// set
-		if ( typeof order === 'number' ) {
-			// Simple column / direction passed in
-			order = [ [ order, dir ] ];
-		}
-		else if ( order.length && ! $.isArray( order[0] ) ) {
-			// Arguments passed in (list of 1D arrays)
-			order = Array.prototype.slice.call( arguments );
-		}
-		// otherwise a 2D array was passed in
-	
-		return this.iterator( 'table', function ( settings ) {
-			settings.aaSorting = order.slice();
-		} );
-	} );
+	// _api_register( 'order()', function ( order, dir ) {
+	// 	var ctx = this.context;
+	//
+	// 	if ( order === undefined ) {
+	// 		// get
+	// 		return ctx.length !== 0 ?
+	// 			ctx[0].aaSorting :
+	// 			undefined;
+	// 	}
+	//
+	// 	// set
+	// 	if ( typeof order === 'number' ) {
+	// 		// Simple column / direction passed in
+	// 		order = [ [ order, dir ] ];
+	// 	}
+	// 	else if ( order.length && ! $.isArray( order[0] ) ) {
+	// 		// Arguments passed in (list of 1D arrays)
+	// 		order = Array.prototype.slice.call( arguments );
+	// 	}
+	// 	// otherwise a 2D array was passed in
+	//
+	// 	return this.iterator( 'table', function ( settings ) {
+	// 		settings.aaSorting = order.slice();
+	// 	} );
+	// } );
 	
 	
 	/**
@@ -8910,7 +8910,7 @@
 		}
 	
 		return this.iterator( 'table', function ( settings ) {
-			settings.aaSortingFixed = $.extend( true, {}, set );
+			settings.aaSortingFixed = $.extend( false, {}, set );
 		} );
 	} );
 	
@@ -8929,7 +8929,7 @@
 				sort.push( [ col, dir ] );
 			} );
 	
-			settings.aaSorting = sort;
+			// settings.aaSorting = sort;
 		} );
 	} );
 	
@@ -9888,7 +9888,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"aaSorting": [[0,'asc']],
+		"aaSorting": [],
 	
 	
 		/**

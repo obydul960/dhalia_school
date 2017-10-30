@@ -19,8 +19,9 @@
                              {!! Form::open(['url' => 'school_year_store','class' => 'form_advanced_validation','method' => 'post','files' => true]) !!}
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="title" maxlength="30" minlength="4" required>
                                         <label class="form-label">School Year</label>
+                                        <input type="text" class="form-control" name="title" maxlength="30" minlength="4" required>
+
                                     </div>
                                     <div class="help-info">Min. 4, Max. 30 characters</div>
                                 </div>
