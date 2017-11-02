@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class School_Year extends Model
+class Semesters_Model extends Model
 {
     use SoftDeletes;
-    protected $table = 'school_years';
-    protected $fillable = ['id','title','status'];
+    protected $table = 'semesters';
+    protected $fillable = ['id','school_year_id','title','start','end'];
     protected $dates = ['deleted_at'];
 }

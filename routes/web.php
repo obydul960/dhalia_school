@@ -38,11 +38,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', 'HomeController@index');
 
     Route::resource('users','UserController');
+    Route::resource('direction','Backend\Direction_Controller');
+    Route::resource('behaviors','Backend\Behavior_Controller');
 
 //    Route::resource('roles','Backend\Role');
     Route::resource('assin_role','Backend\Assin_Role_Controller');
     Route::resource('permission','Backend\Permission_Controller');
     Route::resource('assin_permission','Backend\Assion_Permission_Controller');
+
+    //semester setting
+    Route::resource('semesters','Backend\Semester_Controller');
 
 //    Route::get('roles','Backend\Role@index');
     Route::get('/roles' , ['as' => 'roles' , 'uses'=> 'Backend\Role@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

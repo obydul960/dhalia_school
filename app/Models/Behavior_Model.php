@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class School_Year extends Model
+class Behavior_Model extends Model
 {
     use SoftDeletes;
-    protected $table = 'school_years';
-    protected $fillable = ['id','title','status'];
+    protected $table = 'behaviors';
+    protected $fillable = ['id','title'];
     protected $dates = ['deleted_at'];
 }

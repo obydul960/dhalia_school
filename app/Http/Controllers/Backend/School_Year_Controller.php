@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
-use App\Model\School_Year;
+use App\Models\School_Year;
 use Session;
 
 class School_Year_Controller extends Controller
