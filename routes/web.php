@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     Route::resource('direction','Backend\Direction_Controller');
     Route::resource('behaviors','Backend\Behavior_Controller');
+    Route::resource('schools','Backend\School_Controller');
+    Route::resource('school_admins','Backend\School_Admins_Controller');
 
 //    Route::resource('roles','Backend\Role');
     Route::resource('assin_role','Backend\Assin_Role_Controller');

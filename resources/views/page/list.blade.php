@@ -8,7 +8,7 @@
                 <div class="header">
                     <h2>School Role Management</h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="{{url('schools/create')}}" class="dropdown-toggle btn btn-info">New Add</a>
+                        <a href="{{url('roles/create')}}" class="dropdown-toggle btn btn-info">New Add</a>
                     </ul>
                 </div>
                 <div class="body">
@@ -16,29 +16,26 @@
                         <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>E-mail</th>
-                                <th>Phone</th>
-                                <th>Student Card Background</th>
+                                <th>Name</th>
+                                <th>Display Name</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Title</th>
-                                <th>E-mail</th>
-                                <th>Phone</th>
-                                <th>Student Card Background</th>
+                                <th>Name</th>
+                                <th>Display Name</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
-                            @foreach($school_info as $school)
+                            @foreach($roles as $role)
                                 <tr>
-                                    <td>{{$school->title}}</td>
-                                    <td>{{$school->email}}</td>
-                                    <td>{{$school->phone}}</td>
-                                    <td><img src="uploads/student_card/{{$school->student_card_background}}" height="50px" width="50px"></td>
+                                    <td>{{$role->name}}</td>
+                                    <td>{{$role->display_name}}</td>
+                                    <td>{{$role->description}}</td>
                                     <td>
 
                                         {{--{!! Form::open(['method' => 'DELETE','action' => ['roles/destroy', $role->id]]) !!}--}}
@@ -47,11 +44,11 @@
                                         {{--<button type="button" class="btn btn-danger btn-small" id="{{$role->id}}">Delete</button>--}}
                                         {{--{!! Form::close() !!}--}}
                                         {{--<button class="rolesDelete btn btn-danger btn-sm waves-effect" type="button" data-item-id="{{$role->id}}"> <i class="material-icons">delete</i> Delete</button>--}}
-                                        {{ Form::open(array('url' => 'schools/' . $school->id, 'class' => 'pull-left')) }}
+                                        {{ Form::open(array('url' => 'roles/' . $role->id, 'class' => 'pull-left')) }}
                                         {{ Form::hidden('_method', 'DELETE') }}
                                         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                                         {{ Form::close() }}
-                                        <a class="btn btn-primary waves-effect" href="{{ URL::to('schools/' . $school->id . '/edit') }}" style="margin-left: 5px"> <i class="material-icons">edit</i> Edit</a>
+                                        <a class="btn btn-primary waves-effect" href="{{ URL::to('roles/' . $role->id . '/edit') }}" style="margin-left: 5px"> <i class="material-icons">edit</i> Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
